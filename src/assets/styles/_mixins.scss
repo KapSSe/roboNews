@@ -1,0 +1,156 @@
+@mixin if-smaller-than($breakpoint-name) {
+    @media (max-width: #{map-get($breakpoints, $breakpoint-name) - 1}) {
+      @content;
+    }
+  }
+  
+  @mixin if-bigger-than($breakpoint-name) {
+    @media (min-width: #{map-get($breakpoints, $breakpoint-name)}) {
+      @content;
+    }
+  }
+  
+  @mixin if-lower-than($breakpoint-name) {
+    @media (max-height: #{map-get($breakpointsVertical, $breakpoint-name)}) {
+      @content;
+    }
+  }
+  
+  @mixin covers-parent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  
+  @mixin layers {
+    display: -ms-grid;
+    display: grid;
+    grid-template-areas: 'layers';
+    -ms-grid-columns: 100%;
+    -ms-grid-rows: 100%;
+    grid-template-columns: 100%;
+    -ms-flex-align: center;
+  
+    > * {
+      grid-area: layers;
+    }
+  
+    &__center {
+      align-self: center;
+    }
+  
+    &__end {
+      align-self: end;
+    }
+  }
+  
+  @mixin hover-underline {
+    position: relative;
+  
+    &::after {
+      position: absolute;
+      left: 4px;
+      right: 4px;
+      bottom: 0;
+      height: 4px;
+      z-index: -1;
+      content: '';
+      transform: scaleX(0);
+      transition: transform $duration $easing;
+      transform-origin: right center;
+      background: $c-brand;
+      pointer-events: none;
+    }
+  
+    &:hover::after {
+      transform-origin: left center;
+      transform: scaleX(1);
+      transition-delay: 0.1s;
+    }
+  }
+  
+  @mixin webkit-smoothscroll {
+    overflow: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  // usage: @include hover(
+  @mixin hover($property, $to-value) {
+    transition: $property $duration $easing;
+  
+    &:hover {
+      #{$property}: $to-value;
+    }
+  }
+  
+  @mixin box-shadow {
+    box-shadow: 0 20px 40px 0 transparentize($c-void, 0.95);
+  }
+  
+  @mixin arrow-left {
+    [class^='icon-'] {
+      display: inline-block;
+      font-size: 6px;
+      transform: rotate(90deg);
+      transition: transform $duration $easing;
+    }
+  
+    &:hover {
+      [class^='icon-'] {
+        transform: rotate(90deg) translateY(8px);
+      }
+    }
+  }
+  
+  @mixin arrow-right {
+    [class^='icon-'] {
+      display: inline-block;
+      font-size: 6px;
+      transform: rotate(-90deg);
+      transition: transform $duration $easing;
+    }
+  
+    &:hover {
+      [class^='icon-'] {
+        transform: rotate(90deg) translateY(8px);
+      }
+    }
+  }
+  
+  @mixin pos($type, $a, $b, $pos: absolute) {
+    @if $type == 'topLeft' {
+      top: $a;
+      left: $b;
+      position: $pos;
+    }
+  
+    @else if $type == 'topRight' {
+      top: $a;
+      right: $b;
+      position: $pos;
+    }
+  
+    @else if $type == 'bottomLeft' {
+      bottom: $a;
+      left: $b;
+      position: $pos;
+    }
+  
+    @else if $type == 'bottomRight' {
+      bottom: $a;
+      right: $b;
+      position: $pos;
+    }
+  }
+  
+  @mixin input-placeholder {
+    &.placeholder { @content; }
+    &::-moz-placeholder { @content; }
+    &::-webkit-input-placeholder { @content; }
+    &:-moz-placeholder { @content; }
+    &:-ms-input-placeholder { @content; }
+  }
+  

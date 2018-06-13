@@ -1,0 +1,60 @@
+/*
+All variables used in project are here.
+
+If you override some external module variables marked with !default (like '~foundation-sites/scss/foundation'),
+include them here
+ */
+
+$c-void: #000;
+$c-gray: #aaa;
+$c-gray-light: #f2f4f6;
+$c-white: #fff;
+$c-8ways: #ec025d; // Your project can have just $c-orange instead, for example. Then use $c-brand: $c-orange;
+$c-text: #191919;
+$c-brand: $c-8ways;
+$c-shadow: transparentize($c-void, 0.9); // To avoid different box-shadows in one UI
+$c-social: (
+  facebook: #3b5999,
+  twitter: #55acee,
+  instagram: #e4405f,
+  tumblr: #34465d,
+  github: #333,
+  dribbble: #ea4c89,
+  pinterest: #bd081c,
+  youtube: #cd201f,
+  linkedin: #0077b5,
+  soundcloud: #f30,
+  foursquare: #f94877,
+  flickr: #ff0084,
+  googleplus: #dd4b39,
+  reddit: #ff5700,
+  steam: #000,
+  vine: #00b489,
+  stumbleupon: #eb4924,
+  skype: #00aff0,
+  personal_website: $c-brand
+);
+
+$f-prata: Prata, serif; // declare another fonts according to your UI kit, then go to _typography
+$f-montserrat: Montserrat, sans-serif;
+
+$breakpoints: (
+  xxs:  420px,
+  xs:   576px,
+  s:    640px,
+  m:    768px,
+  l:    1024px,
+  xl:   1200px,
+  xxl:  1400px
+);
+
+$breakpointsVertical: (
+  s: 520px,
+  m: 620px
+);
+
+$duration: 0.35s;
+
+$easing: cubic-bezier(0.2, 0.1, 0.2, 1);
+
+$header-height: 70px;

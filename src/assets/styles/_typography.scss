@@ -1,0 +1,127 @@
+* {
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  body {
+    text-rendering: optimizeLegibility;
+    font-family: $f-montserrat;
+    font-weight: 300;
+    color: $c-text;
+    font-size: 14px;
+  }
+
+@mixin multiLineEllipsis($lineHeight: 1.2em, $lineCount: 1, $bgColor: white){
+  overflow: hidden;
+  position: relative;
+  line-height: $lineHeight;
+  max-height: $lineHeight * $lineCount; 
+  text-align: justify;
+  margin-right: -0.75em;
+  padding-right: 0.75em;
+  &:before {
+    content: '...';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    background: $bgColor;
+  }
+}
+
+.block-with-text {
+  @include multiLineEllipsis($lineHeight: 1.2em, $lineCount: 3, $bgColor: white);  
+}
+  
+  @mixin heading {
+    font-family: $f-prata;
+    font-weight: 400;
+    line-height: 1.5em;
+  }
+  
+  @mixin h1 {
+    @include heading;
+  
+    font-size: 75px;
+  
+    @include if-smaller-than(s) {
+      font-size: 42px;
+    }
+  }
+  
+  @mixin h2 {
+    @include heading;
+  
+    font-size: 42px;
+  
+    @include if-smaller-than(s) {
+      font-size: 27px;
+    }
+  }
+  
+  @mixin h3 {
+    @include heading;
+  
+    font-size: 27px;
+  
+    @include if-smaller-than(s) {
+      font-size: 20px;
+    }
+  }
+  
+  @mixin h4 {
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 1.9em;
+  
+    @include if-smaller-than(s) {
+      font-size: 21px;
+    }
+  }
+  
+  @mixin type-small-uppercase {
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 1.3em;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  
+  @mixin type-regular {
+    font-size: 14px;
+    line-height: 2em;
+  }
+  
+  @mixin type-input {
+    @include heading;
+  
+    font-size: 18px;
+    line-height: 1.5em;
+  }
+  
+  h1, .h1 {
+    @include h1;
+  }
+  
+  h2, .h2 {
+    @include h2;
+  }
+  
+  h3, .h3 {
+    @include h3;
+  }
+  
+  h4, .h4 {
+    @include h4;
+  }
+  
+  h5, .h5, h6, .h6 {
+    @include type-small-uppercase;
+  }
+  

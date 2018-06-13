@@ -1,0 +1,27 @@
+<header uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
+    <nav class="uk-navbar-container" uk-navbar>
+      <div class="uk-navbar-left">
+          <ul class="uk-navbar-nav">
+              <li class="uk-active"><a href="#"><img [src]="logoPath" alt="logo"></a></li>
+          </ul>
+      </div>
+      <div class="uk-navbar-right">
+          <ul class="uk-navbar-nav">
+              <li class="uk-active"><a uk-toggle="target: #offcanvas-nav" uk-icon="menu"></a>
+              </li>
+          </ul>
+      </div>
+    </nav>
+    <div id="offcanvas-nav" uk-offcanvas="overlay:true;flip:true">
+        <div class="uk-offcanvas-bar">
+            <ul class="uk-nav uk-nav-default">
+                <button class="uk-offcanvas-close" type="button" uk-close></button>
+                <li class="uk-nav-header"><a href="#"><img [src]="logoPath" alt="logo"> Menu</a></li>
+                <li class="uk-divider-small divider"></li>
+                <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: sign-in"></span>Sign in</a></li>
+                <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: file-edit"></span>Sign up</a></li>
+            </ul>
+        </div>
+    </div>
+  </header>
+  
